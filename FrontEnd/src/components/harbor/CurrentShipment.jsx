@@ -12,7 +12,7 @@ const CurrentShipping = () => {
     if (userData && userData.harbor_ID) {
       const fetchShipments = async () => {
         try {
-          const response = await axios.get(`https://harbor-api-two.vercel.app//finishedshipments/${userData.harbor_ID}`);
+          const response = await axios.get(`https://harbor-api-two.vercel.app/finishedshipments/${userData.harbor_ID}`);
           setShipments(response.data);
         } catch (error) {
           console.error('Error fetching shipments:', error);
