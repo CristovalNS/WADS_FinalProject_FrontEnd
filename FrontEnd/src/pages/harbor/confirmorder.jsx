@@ -24,7 +24,7 @@ const ConfirmOrder = () => {
         console.log("userData:", userData);  // Debugging log
         const harborID = userData.harbor_ID;
         console.log("harborID:", harborID);  // Debugging log
-        const response = await fetch(`http://127.0.0.1:8003/shipment/${harborID}/${id}`);
+        const response = await fetch(`https://harbor-api-two.vercel.app/shipment/${harborID}/${id}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
