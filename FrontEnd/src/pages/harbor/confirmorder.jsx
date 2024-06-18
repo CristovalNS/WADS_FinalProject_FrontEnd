@@ -49,7 +49,7 @@ const ConfirmOrder = () => {
   
     try {
       // Update shipment status
-      const shipmentStatusResponse = await fetch(`http://127.0.0.1:8003/updateShipment/${harborID}/${shipmentDetails.checkpoint_ID}/${transportStatus}`, {
+      const shipmentStatusResponse = await fetch(`https://harbor-api-two.vercel.app/updateShipment/${harborID}/${shipmentDetails.checkpoint_ID}/${transportStatus}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ const ConfirmOrder = () => {
       }
   
       // Update harbor shipment
-      const harborShipmentResponse = await fetch(`http://127.0.0.1:8003/update_harbor_shipment/${harborID}/${shipmentDetails.checkpoint_ID}`, {
+      const harborShipmentResponse = await fetch(`https://harbor-api-two.vercel.app/update_harbor_shipment/${harborID}/${shipmentDetails.checkpoint_ID}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
