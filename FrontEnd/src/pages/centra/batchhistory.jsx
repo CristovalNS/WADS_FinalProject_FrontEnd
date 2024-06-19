@@ -27,7 +27,7 @@ const BatchHistory = () => {
         try {
             const userData = await getUserData()
             const centraID = userData.centra_ID;
-            const response = await axios.get(api + '/get_all_orders/' + centraID);
+            const response = await axios.get(api + 'get_all_orders/' + centraID);
             setBatches(response.data);
         } catch (error) {
             console.error('Error fetching batches:', error);
