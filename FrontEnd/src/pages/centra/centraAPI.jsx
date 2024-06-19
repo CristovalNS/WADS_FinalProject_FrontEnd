@@ -1,4 +1,4 @@
-const api = 'https://centra-api.vercel.app/';
+const api = 'https://centra-api.vercel.app';
 
 export function API() {return api;}
 
