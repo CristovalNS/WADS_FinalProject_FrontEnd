@@ -1,0 +1,10 @@
+{
+    "rewrites": [
+      { "source": "/confirmorder/:shipmentID", "destination": "/index.html" },
+      { "source": "/ongoingshipments", "destination": "/index.html" },
+      { "source": "/selectconfirm", "destination": "/index.html" },
+      { "source": "/shippinghistory", "destination": "/index.html" },
+      { "source": "/login", "destination": "/index.html" }
+    ]
+  }
+  
