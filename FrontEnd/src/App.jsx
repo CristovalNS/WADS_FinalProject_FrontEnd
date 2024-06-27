@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 import { AuthContext, AuthProvider } from './AuthContext';
+
 import Login from "./pages/authentication/Login_Web";
 import Register from "./pages/authentication/Register_Web";
 import Role from "./pages/authentication/Role_Web";
@@ -14,6 +16,12 @@ import Dashboard from './pages/admin/Dashboard';
 import History from './pages/admin/History';
 import Ongoing from './pages/admin/Ongoing';
 import Upcoming from './pages/admin/Upcoming';
+
+import AdminHomeMobile from './pages/admin-mobile/adminmobilehome';
+import ConfirmOrderAdminMobile from './pages/admin-mobile/confirmorder';
+import OngoingShipmentsAdminMobile from './pages/admin-mobile/ongoingshipments';
+import Selectconfirmadminmobile from './pages/admin-mobile/selectconfirm';
+import ShippingHistoryAdminMobile from './pages/admin-mobile/shippinghistory';
 
 import BatchHistory from './pages/centra/batchhistory';
 import Centrahome from './pages/centra/centrahome';
@@ -32,6 +40,8 @@ import ShippingHistory from './pages/harbor/shippinghistory';
 
 const App = () => {
   const { isAuthenticated, userType } = useContext(AuthContext);
+  const isLaptop = useMediaQuery({ minWidth: 1024 });
+  const isMobile = useMediaQuery({ maxWidth: 1023 });
 
   return (
     <Router>
@@ -47,7 +57,7 @@ const App = () => {
           </>
         ) : (
           <>
-            {userType === 1 && (
+            {userType === 1 && isLaptop && ( 
               <>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/dashboard" element={<Dashboard />} />
@@ -71,15 +81,24 @@ const App = () => {
               </>
             )}
             {userType === 3 && (
-              <React.Fragment>
+              <>
                 <Route path="/harborhome" element={<Harborhome />} />
-                <Route path="*" element={<Navigate to="/harborhome" />} />
                 <Route path="/" element={<Harborhome />} />
                 <Route path="/ongoingshipments" element={<Ongoingshipments />} />
                 <Route path="/confirmorder/:id" element={<ConfirmOrder />} /> 
                 <Route path="/shippinghistory" element={<ShippingHistory />} />
                 <Route path="/login" element={<Login />} />
-              </React.Fragment>
+              </>
+            )}
+            {userType === 1 && isMobile && (
+              <>
+                <Route path="/" element={<AdminHomeMobile />} />
+                <Route path="/confirmorder/:shipmentID" element={<ConfirmOrderAdminMobile />} />
+                <Route path="/ongoingshipments" element={<OngoingShipmentsAdminMobile />} />
+                <Route path="/selectconfirm" element={<Selectconfirmadminmobile />} />
+                <Route path="/shippinghistory" element={<ShippingHistoryAdminMobile />} />
+                <Route path="/login" element={<Login />} />
+              </>
             )}
             <Route path="*" element={<Navigate to="/" />} />
           </>
